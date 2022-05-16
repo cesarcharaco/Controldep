@@ -66,6 +66,12 @@
               <p>Asignaturas</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{!!route('pde.listar_pde_admin')!!}" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>Planes de Evaluación</p>
+            </a>
+          </li>
           @else
           <li class="nav-item">
             <a href="{!!route('pde.index')!!}" class="nav-link">

@@ -225,4 +225,31 @@ class PDEController extends Controller
         
         return view('pde.ver_pde',compact('id_asignacion'));
     }
+
+    public function listar_pde_admin()
+    {
+        if(request()->ajax()) {
+            $pde=\DB::table('pde')
+            ->join('asignacion','asignacion.id','=','pde.id_asignacion')
+            ->join('profesores','profesores.id','=','asignacion.id_profesor')
+            ->join('asignaturas','asignaturas.id','=','asignacion.id_asignatura')
+            ->join('periodos','periodos.id','=','asignacion.id_periodo')
+            ->select('pde.*','asignacion.subseccion_tecnica','periodos.periodo','asignaturas.asignatura','asignaturas.codigo','profesores.profesor','profesores.rut','profesores.dv')->get();
+            return datatables()->of($pde)
+                ->addColumn('action', function ($row) {
+                    $buscar=PDE::where('id_asignacion',$row->id)->count();
+                    /*$edit = '<a href="../pde/'.$row->id.'/editar_estrategia" data-id="'.$row->id.'" class="btn btn-warning btn-xs" id="addPde"><i class="fa fa-pencil-alt"></i></a>';
+                    
+                    
+                       return $edit;*/
+                    
+                    
+                })->rawColumns(['action'])
+                ->addIndexColumn()
+                ->make(true);
+        }
+        
+        $programas=Programa::all();
+        return view('pde.listar_pde_admin',compact('programas'));
+    }
 }
