@@ -66,13 +66,20 @@
               <p>Asignaturas</p>
             </a>
           </li>
-          @endif
+          @else
           <li class="nav-item">
             <a href="{!!route('pde.index')!!}" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>Asignaciones</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{!!route('pde.listar')!!}" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
               <p>Planes de Evaluación</p>
             </a>
           </li>
+          @endif
           
           
         </ul>

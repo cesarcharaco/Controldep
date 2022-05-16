@@ -32,6 +32,10 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 	Route::get('/programas/{id_programa}/buscar_asignaturas',[ProgramaController::class,'buscar_asignaturas'])->name('programas.buscar_asignaturas');
 	Route::post('profesores/asignar',[ProfesoresController::class,'asignar'])->name('profesores.asignar');
 	Route::get('/pde/{id_asignacion}/crear_pde',[PDEController::class,'crear_pde'])->name('pde.crear_pde');
+	Route::get('/pde/listar',[PDEController::class,'listar_pde'])->name('pde.listar');
+	Route::get('/pde/{id_pde}/editar_estrategia',[PDEController::class,'editar_estrategia'])->name('pde.editar_estrategia');
+	Route::post('pde/editar_pde',[PDEController::class,'editar_pde'])->name('pde.editar_pde');
+	Route::get('/pde/{id_asignacion}/ver_pde',[PDEController::class,'ver_pde'])->name('pde.ver_pde');
 
 	Route::resource('/profesores',ProfesoresController::class);
 	Route::resource('/periodos',PeriodoController::class);

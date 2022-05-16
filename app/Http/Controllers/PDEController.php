@@ -35,7 +35,7 @@ class PDEController extends Controller
                 ->addColumn('action', function ($row) {
                     $buscar=PDE::where('id_asignacion',$row->id)->count();
                     $add = '<a href="pde/'.$row->id.'/crear_pde" data-id="'.$row->id.'" class="btn btn-success btn-xs" id="addPde"><i class="fa fa-plus"></i></a>';
-                    $watch = '<a href="javascript:void(0);" data-id="'.$row->id.'" class="btn btn-info btn-xs" id="watchPde"><i class="fa fa-eye"></i></a>';
+                    $watch = '<a href="pde/'.$row->id.'/ver_pde" data-id="'.$row->id.'" class="btn btn-info btn-xs" id="watchPde"><i class="fa fa-eye"></i></a>';
                     if ($buscar > 0) {
                        return  $watch;
                     } else {
@@ -68,7 +68,30 @@ class PDEController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $suma=0;
+        for ($j=0; $j < count($request->ponderacion_eval); $j++) { 
+            $suma+=$request->ponderacion_eval[$j];
+        }
+        if ($suma==100) {
+            for ($i=0; $i < count($request->ponderacion_eval); $i++) {
+            $pde=new PDE();
+            $pde->id_asignacion=$request->id_asignacion;
+            $pde->fecha=$request->fecha[$i];
+            $pde->ponderacion_eval=$request->ponderacion_eval[$i];
+            $pde->nota_eval=$request->nota_eval[$i];
+            $pde->instrumento_eval=$request->instrumento_eval[$i];
+            $pde->save();
+            }
+            Alert::success('Éxito', 'Plan de Evaluación registrado')->persistent(true);
+            return redirect()->to('pde');
+            //dd('mmm');
+        } else {
+            # debe completar 100 en total
+            Alert::error('Alerta', 'Las ponderaciones deben sumar un total de 100 para poder ser registrado')->persistent(true);
+            return redirect()->back();
+        }
+        
     }
 
     /**
@@ -122,5 +145,84 @@ class PDEController extends Controller
         $asignatura=Asignatura::find($asignacion->id_asignatura);
 
         return view('pde.create',compact('id_asignacion','asignacion','asignatura'));
+    }
+
+    public function listar_pde()
+    {
+        $profesor=Profesores::where('id_usuario',\Auth::getUser()->id)->first();
+        if(request()->ajax()) {
+            $pde=\DB::table('pde')
+            ->join('asignacion','asignacion.id','=','pde.id_asignacion')
+            ->join('profesores','profesores.id','=','asignacion.id_profesor')
+            ->join('asignaturas','asignaturas.id','=','asignacion.id_asignatura')
+            ->join('periodos','periodos.id','=','asignacion.id_periodo')
+            ->where('profesores.id',$profesor->id)
+            ->select('pde.*','asignacion.subseccion_tecnica','periodos.periodo','asignaturas.asignatura','asignaturas.codigo')->get();
+            return datatables()->of($pde)
+                ->addColumn('action', function ($row) {
+                    $buscar=PDE::where('id_asignacion',$row->id)->count();
+                    $edit = '<a href="../pde/'.$row->id.'/editar_estrategia" data-id="'.$row->id.'" class="btn btn-warning btn-xs" id="addPde"><i class="fa fa-pencil-alt"></i></a>';
+                    
+                    
+                       return $edit;
+                    
+                    
+                })->rawColumns(['action'])
+                ->addIndexColumn()
+                ->make(true);
+        }
+        
+        return view('pde.listar');
+    }
+
+    public function editar_estrategia($id_pde)
+    {
+        //dd($id_pde);
+        $pde=PDE::find($id_pde);
+        $asignacion=Asignacion::find($pde->id_asignacion);
+        $asignatura=Asignatura::find($asignacion->id_asignatura);
+        return view('pde.editar_estrategia',compact('pde','asignacion','asignatura'));
+    }
+
+    public function editar_pde(Request $request)
+    {
+        //dd($request->all());
+        $pde=PDE::find($request->id_pde);
+        $pde->fecha=$request->fecha;
+        $pde->nota_eval=$request->nota_eval;
+        $pde->instrumento_eval=$request->instrumento_eval;
+        $pde->save();
+
+        Alert::success('Éxito', 'Estrategia Actualizada')->persistent(true);
+            return redirect()->to('pde');
+    }
+
+    public function ver_pde($id_asignacion)
+    {
+        $profesor=Profesores::where('id_usuario',\Auth::getUser()->id)->first();
+        if(request()->ajax()) {
+            $pde=\DB::table('pde')
+            ->join('asignacion','asignacion.id','=','pde.id_asignacion')
+            ->join('profesores','profesores.id','=','asignacion.id_profesor')
+            ->join('asignaturas','asignaturas.id','=','asignacion.id_asignatura')
+            ->join('periodos','periodos.id','=','asignacion.id_periodo')
+            ->where('profesores.id',$profesor->id)
+            ->where('asignacion.id',$id_asignacion)
+            ->select('pde.*','asignacion.subseccion_tecnica','periodos.periodo','asignaturas.asignatura','asignaturas.codigo')->get();
+            return datatables()->of($pde)
+                ->addColumn('action', function ($row) {
+                    $buscar=PDE::where('id_asignacion',$row->id)->count();
+                    /*$edit = '<a href="../pde/'.$row->id.'/editar_estrategia" data-id="'.$row->id.'" class="btn btn-warning btn-xs" id="addPde"><i class="fa fa-pencil-alt"></i></a>';
+                    
+                    
+                       return $edit;*/
+                    
+                    
+                })->rawColumns(['action'])
+                ->addIndexColumn()
+                ->make(true);
+        }
+        
+        return view('pde.ver_pde',compact('id_asignacion'));
     }
 }

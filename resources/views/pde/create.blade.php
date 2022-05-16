@@ -40,8 +40,12 @@
             <div class="card-body" id="card-body">
               <p align="center"><small>Todos los campos <b style="color: red;">*</b> son requeridos.</small></p>
               <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-11">
+                  <p align="center">Nota: Debe revisar bien la suma de las ponderaciones, ya que deben sumar 100 en total, antes de enviar la información</p>
+                </div>
+                <div class="col-md-1">
                   <div class="float-right">
+
                     <button type="button" id="agregar"  data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar otra Evaluación" class="btn btn-sm btn-primary align-right"><i class="fa fa-plus"></i></button>
                   </div>
                 </div>
@@ -57,7 +61,7 @@
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="fecha">Fecha <b style="color: red;">*</b></label>
-                    <input type="date" name="fecha" id="fecha" class="form-control" min="{{date('Y-m-d')}}">
+                    <input type="date" name="fecha[]" id="fecha" class="form-control" min="{{date('Y-m-d')}}">
                   </div>
                   @error('fecha')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -66,7 +70,7 @@
                 <div class="col-sm-3">
                   <div class="form-group">
                     <label for="ponderacion_eval">Ponderación de Evaluación <b style="color: red;">*</b></label>
-                    <input type="number" step="0.2" min="0" name="ponderacion_eval" id="ponderacion_eval" class="form-control" required="required" placeholder="Ingrese la Ponderación de la Evaluación">
+                    <input type="number" step="0.2" min="0" name="ponderacion_eval[]" id="ponderacion_eval" class="form-control" required="required" placeholder="Ingrese la Ponderación de la Evaluación">
                   </div>
                   @error('ponderacion_eval')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -74,8 +78,8 @@
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label for="nota_eval">Nota de la Evaluación</label>
-                    <input type="number" step="0.2" min="0" name="nota_eval" id="nota_eval" class="form-control" placeholder="Ingrese la Nota de la Evaluación de la Evaluación">
+                    <label for="nota_eval">Nota de la Evaluación <b style="color: red;">*</b></label>
+                    <input type="number" step="0.2" min="0" value="0" name="nota_eval[]" id="nota_eval" class="form-control" required="required" placeholder="Ingrese la Nota de la Evaluación de la Evaluación">
                   </div>
                   @error('nota_eval')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -84,7 +88,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="instrumento_eval">Instrumento de Evaluación <b style="color: red;">*</b></label>
-                        <input type="text" name="instrumento_eval" id="instrumento_eval" class="form-control" required="required" placeholder="Ingrese el Instrumento de Evaluación" onkeyup="this.value = this.value.toUpperCase();">
+                        <input type="text" name="instrumento_eval[]" id="instrumento_eval" class="form-control" required="required" placeholder="Ingrese el Instrumento de Evaluación" onkeyup="this.value = this.value.toUpperCase();">
                       </div>
                       @error('instrumento_eval')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -116,11 +120,14 @@ $(document).ready(function () {
 });
 var i=1;
 $("#agregar").on('click',function (argument) {
-  console.log('mmmm');
-  $("#filas").append('<div class="row" id="fila'+i+'"><div class="col-sm-3"><div class="form-group"><label for="fecha">Fecha <b style="color: red;">*</b></label><input type="date" name="fecha" id="fecha" class="form-control" ></div></div><div class="col-sm-3"><div class="form-group"><label for="ponderacion_eval">Ponderación de Evaluación <b style="color: red;">*</b></label><input type="number" step="0.2" min="0" name="ponderacion_eval" id="ponderacion_eval" class="form-control" required="required" placeholder="Ingrese la Ponderación de la Evaluación"></div></div><div class="col-md-3"><div class="form-group"><label for="nota_eval">Nota de la Evaluación</label><input type="number" step="0.2" min="0" name="nota_eval" id="nota_eval" class="form-control" placeholder="Ingrese la Nota de la Evaluación de la Evaluación"></div></div> <div class="col-sm-3"><div class="form-group"><label for="instrumento_eval">Instrumento de Evaluación <b style="color: red;">*</b></label><input type="text" name="instrumento_eval" id="instrumento_eval" class="form-control" required="required" placeholder="Ingrese el Instrumento de Evaluación" onkeyup="this.value = this.value.toUpperCase();"></div></div></div>');
+  
+  $("#filas").append('<div class="row" id="fila'+i+'"><div class="col-sm-3"><div class="form-group"><label for="fecha">Fecha <b style="color: red;">*</b></label><input type="date" min="{{date("Y-m-d")}}" name="fecha[]" id="fecha'+i+'" class="form-control" ></div></div><div class="col-sm-3"><div class="form-group"><label for="ponderacion_eval">Ponderación de Evaluación <b style="color: red;">*</b></label><input type="number" step="0.2" min="0" name="ponderacion_eval[]" id="ponderacion_eval'+i+'" class="form-control" required="required" placeholder="Ingrese la Ponderación de la Evaluación"></div></div><div class="col-md-3"><div class="form-group"><label for="nota_eval">Nota de la Evaluación</label><input type="number" step="0.2" min="0" value="0" name="nota_eval[]" id="nota_eval'+i+'" class="form-control" placeholder="Ingrese la Nota de la Evaluación de la Evaluación"></div></div> <div class="col-sm-3"><div class="form-group"><label for="instrumento_eval">Instrumento de Evaluación <b style="color: red;">*</b></label><input type="text" name="instrumento_eval[]" id="instrumento_eval'+i+'" class="form-control" required="required" placeholder="Ingrese el Instrumento de Evaluación" onkeyup="this.value = this.value.toUpperCase();"></div><div class="float-right"><button type="button" id="borrar"  data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar Evaluación" class="btn btn-sm btn-danger align-right" onclick="borrar_fila('+i+')"><i class="fa fa-trash"></i></button></div></div>');
   i=i+1;
-})
-
+});
+function borrar_fila(fila) {
+  //console.log('entro');
+  $("#fila"+fila).remove();
+}
 </script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 @endsection
