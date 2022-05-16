@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"><i class="nav-icon fa fa-shopping-basket"></i> Asignar Asignatura</h4>
+        <h4 class="modal-title"><i class="nav-icon fa fa-user"></i> Asignar Asignatura</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,7 +15,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="Programa">Programa<b style="color: red;">*</b></label>
-                <select name="id_programa" id="id_programa" class="form-control select2" title="Selececcione el Programa de Estudio">
+                <select name="id_programa" id="id_programa" class="form-control select2bs4" title="Selececcione el Programa de Estudio">
                   @foreach($programas as $key)
                     <option value="{{$key->id}}">{{$key->cod}} - {{$key->programa}}</option>
                   @endforeach
@@ -25,15 +25,17 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="asignatura">Asignatura <b style="color: red;">*</b></label>
-                <select name="id_asignatura" id="id_asignatura" class="form-control select2" title="Selececcione la Asignatura">
-                  
+                <select name="id_asignatura" id="id_asignatura" class="form-control select2bs4" title="Selececcione la Asignatura">
+                  @foreach($asignaturas as $key)
+                    <option value="{{$key->id}}">{{$key->codigo}} - {{$key->asignatura}}</option>
+                  @endforeach
                 </select>
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="periodo">Periodo: </label>
-                <select name="id_periodo" id="id_periodo" class="form-control select2" title="Selececcione el Periodo Académico">
+                <select name="id_periodo" id="id_periodo" class="form-control select2bs4" title="Selececcione el Periodo Académico">
                   @foreach($periodos as $key)
                     <option value="{{$key->id}}">{{$key->periodo}} - ({{$key->status}})</option>
                   @endforeach
@@ -53,17 +55,8 @@
             </div>
             <div class="col-sm-4">
               <div class="form-group">
-                <label for="subseccion_tecnica">Subsección Técnica: <b style="color: red;">*</b></label>
-                <input type="text" name="subseccion_tecnica" id="subseccion_tecnica" class="form-control" required="required" placeholder="Ingrese la Subsección Técnica" >
-              </div>
-              @error('subseccion_tecnica')
-                <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-            </div>
-            <div class="col-sm-4">
-              <div class="form-group">
                 <label for="subseccion_practica">Subsección Práctica:</label>
-                <input type="text" name="subseccion_practica" id="subseccion_practica" class="form-control" placeholder="Ingrese la Subsección Técnica" >
+                <input type="text" name="subseccion_practica" id="subseccion_practica" class="form-control" placeholder="Ingrese la Subsección Práctica" >
               </div>
               @error('subseccion_practica')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -74,7 +67,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="subseccion_campo_clinico">Subsección Campo Clínico:</label>
-                <input type="text" name="subseccion_campo_clinico" id="subseccion_campo_clinico" class="form-control" required="required" placeholder="Ingrese la Subsección Técnica" >
+                <input type="text" name="subseccion_campo_clinico" id="subseccion_campo_clinico" class="form-control" placeholder="Ingrese la Subsección Campo Clínico" >
               </div>
               @error('subseccion_campo_clinico')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -82,12 +75,41 @@
             </div>
             <div class="col-sm-4">
               <div class="form-group">
-                <label for="subseccion_practica">Subsección Práctica:</label>
-                <select name="jornada" id="jornada" class="form-control select2" title="Seleccione la jornada">
+                <label for="subseccion_practica">Jornada:</label>
+                <select name="jornada" id="jornada" class="form-control select2bs4" title="Seleccione la jornada">
                   <option value="D">D</option>
                   <option value="V">V</option>
                 </select>
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="semestre">Semestre:<b style="color: red;">*</b></label>
+                <input type="text" name="semestre" id="semestre" class="form-control" required="required" placeholder="Ingrese el Semestre de la Asignatura" >
+              </div>
+              @error('semestre')
+                <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="pensum">Pensum:<b style="color: red;">*</b></label>
+                <input type="text" name="pensum" id="pensum" class="form-control" required="required" placeholder="Ingrese el Pensum al que pertenece la Asignatura" >
+              </div>
+              @error('pensum')
+                <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="seccion">Sección:<b style="color: red;">*</b></label>
+                <input type="text" name="seccion" id="seccion" class="form-control" required="required" placeholder="Ingrese la Sección a la que será asignado" >
+              </div>
+              @error('seccion')
+                <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
             </div>
           </div>
         </div>

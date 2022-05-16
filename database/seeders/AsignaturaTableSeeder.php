@@ -14,21 +14,21 @@ class AsignaturaTableSeeder extends Seeder
     public function run()
     {
         \DB::table('asignaturas')->insert([
-        	['codigo' => 'FGIN01', 'asignatura' => 'Inglés I', 'id_programa' => 1],
-        	['codigo' => 'IDEN02', 'asignatura' => 'Inglés II', 'id_programa' => 1],
-        	['codigo' => 'FGFC03', 'asignatura' => 'Formación Ciudadana', 'id_programa' => 1],
-        	['codigo' => 'GEPE01', 'asignatura' => 'Preparación y Evaluación de Proyectos', 'id_programa' => 1],
-        	['codigo' => 'TESM01', 'asignatura' => 'Diagnóstico y Selección de Motores', 'id_programa' => 1],
-        	['codigo' => 'DCMS11', 'asignatura' => 'Mecánica de Servicio Técnico', 'id_programa' => 1],
-        	['codigo' => 'GEAP01', 'asignatura' => 'Administración y Productividad', 'id_programa' => 1],
-        	['codigo' => 'DBMT01', 'asignatura' => 'Matemática II', 'id_programa' => 1],
-        	['codigo' => 'GMON22', 'asignatura' => 'Sistemas OleoHidráulicos y Neumáticos de Maquinaria', 'id_programa' => 1],
-        	['codigo' => 'ATAD01', 'asignatura' => 'Administración', 'id_programa' => 1],
-        	['codigo' => 'TEFT01', 'asignatura' => 'Fundamentos de Termodinámica', 'id_programa' => 1],
-        	['codigo' => 'MTAE02', 'asignatura' => 'Resolución de Problemas de Álgebra', 'id_programa' => 1],
-        	['codigo' => 'TEEH01', 'asignatura' => 'Sistemas Electrohidráulicos', 'id_programa' => 1],
-        	['codigo' => 'GMAM42', 'asignatura' => 'Mantenimiento de Sistemas de Automatización y Control de Maquinaria', 'id_programa' => 1],
-        	['codigo' => 'GMLM41', 'asignatura' => 'Mantenimiento de Sistemas de Lubricación en Maquinaria', 'id_programa' => 1],
+        	['codigo' => 'FGIN01', 'asignatura' => 'Inglés I', 'id_programa' => 1],//1
+        	['codigo' => 'IDEN02', 'asignatura' => 'Inglés II', 'id_programa' => 1],//2
+        	['codigo' => 'FGFC03', 'asignatura' => 'Formación Ciudadana', 'id_programa' => 1],//3
+        	['codigo' => 'GEPE01', 'asignatura' => 'Preparación y Evaluación de Proyectos', 'id_programa' => 1],//4
+        	['codigo' => 'TESM01', 'asignatura' => 'Diagnóstico y Selección de Motores', 'id_programa' => 1],//5
+        	['codigo' => 'DCMS11', 'asignatura' => 'Mecánica de Servicio Técnico', 'id_programa' => 1],//6
+        	['codigo' => 'GEAP01', 'asignatura' => 'Administración y Productividad', 'id_programa' => 1],//7
+        	['codigo' => 'DBMT01', 'asignatura' => 'Matemática II', 'id_programa' => 1],//8
+        	['codigo' => 'GMON22', 'asignatura' => 'Sistemas OleoHidráulicos y Neumáticos de Maquinaria', 'id_programa' => 1],//9
+        	['codigo' => 'ATAD01', 'asignatura' => 'Administración', 'id_programa' => 1],//10
+        	['codigo' => 'TEFT01', 'asignatura' => 'Fundamentos de Termodinámica', 'id_programa' => 1],//11
+        	['codigo' => 'MTAE02', 'asignatura' => 'Resolución de Problemas de Álgebra', 'id_programa' => 1],//12
+        	['codigo' => 'TEEH01', 'asignatura' => 'Sistemas Electrohidráulicos', 'id_programa' => 1],//13
+        	['codigo' => 'GMAM42', 'asignatura' => 'Mantenimiento de Sistemas de Automatización y Control de Maquinaria', 'id_programa' => 1],//14
+        	['codigo' => 'GMLM41', 'asignatura' => 'Mantenimiento de Sistemas de Lubricación en Maquinaria', 'id_programa' => 1],//15
         	['codigo' => 'ETAD01', 'asignatura' => 'Análisis Estadístico de Datos', 'id_programa' => 1],
         	['codigo' => 'ENME02', 'asignatura' => 'Inglés Mecánica II', 'id_programa' => 1],
         	['codigo' => 'TEMF01', 'asignatura' => 'Mecánica de Fluidos', 'id_programa' => 1],
@@ -87,6 +87,7 @@ class AsignaturaTableSeeder extends Seeder
 
 
         	['codigo' => 'GEAP01', 'asignatura' => 'Administración y Productividad ', 'id_programa' => 4],
+            ['codigo' => 'ETAD01', 'asignatura' => 'Análisis Estadístico de Datos', 'id_programa' => 4],
         	['codigo' => 'GMMD31', 'asignatura' => 'Diagnóstico Electrónico de Motores Diésel', 'id_programa' => 4],
         	['codigo' => 'DCEA12', 'asignatura' => 'Electricidad Aplicada a Sistemas Móviles', 'id_programa' => 4],
         	['codigo' => 'MPEM01', 'asignatura' => 'Electrónica de Maquinaria Pesada', 'id_programa' => 4],
@@ -110,9 +111,12 @@ class AsignaturaTableSeeder extends Seeder
         	
 
         	['codigo' => 'MACR33', 'asignatura' => 'Conectividad y Redes del Automóvil', 'id_programa' => 5],
+            ['codigo' => 'MASP41', 'asignatura' => 'Diagnóstico de sistemas de propulsión inteligentes', 'id_programa' => 5],
         	['codigo' => 'DCEA12', 'asignatura' => 'Electricidad Aplicada a Sistemas Móviles', 'id_programa' => 5],
         	['codigo' => 'FGFC03', 'asignatura' => 'Formación Ciudadana', 'id_programa' => 5],
+            ['codigo' => 'MAGE42', 'asignatura' => 'Gestión Electrónica del Motor', 'id_programa' => 5],
         	['codigo' => 'HIIA35', 'asignatura' => 'Integración Automotriz I', 'id_programa' => 5],
+            ['codigo' => 'HIIA45', 'asignatura' => 'Integración Automotriz II', 'id_programa' => 5],
         	['codigo' => 'DCMS11', 'asignatura' => 'Mecánica de Servicio Técnico', 'id_programa' => 5],
         	['codigo' => 'DCOT13', 'asignatura' => 'Organización del Taller Mecánico', 'id_programa' => 5],
         	['codigo' => 'MTAE02', 'asignatura' => 'Resolución de Problemas en Álgebra', 'id_programa' => 5],

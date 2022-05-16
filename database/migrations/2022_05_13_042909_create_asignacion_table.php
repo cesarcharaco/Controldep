@@ -21,6 +21,9 @@ class CreateAsignacionTable extends Migration
             $table->integer('horas');
             $table->string('subseccion_tecnica');
             $table->string('subseccion_practica')->nullable()->default('No');
+            $table->string('semestre');
+            $table->string('pensum');
+            $table->string('seccion');
             $table->string('subseccion_campo_clinico')->nullable()->default('No');
             $table->enum('jornada',['D','V'])->default('D');
 

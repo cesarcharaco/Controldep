@@ -6,6 +6,8 @@ use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\PDEController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,10 +28,15 @@ Route::middleware('guest')->group(function () {
 Auth::routes();
 Route::group(['middleware' => ['web', 'auth']], function() {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-	
+	Route::get('cotizaciones/{id_cotizacion}/contestada',[PreCotizacionesController::class,'contestada'])->name('cotizaciones.contestada');
+	Route::get('/programas/{id_programa}/buscar_asignaturas',[ProgramaController::class,'buscar_asignaturas'])->name('programas.buscar_asignaturas');
+	Route::post('profesores/asignar',[ProfesoresController::class,'asignar'])->name('profesores.asignar');
+	Route::get('/pde/{id_asignacion}/crear_pde',[PDEController::class,'crear_pde'])->name('pde.crear_pde');
+
 	Route::resource('/profesores',ProfesoresController::class);
 	Route::resource('/periodos',PeriodoController::class);
 	Route::resource('/programas',ProgramaController::class);
 	Route::resource('/asignaturas',AsignaturaController::class);
+	Route::resource('/pde',PDEController::class);
 	
 });

@@ -102,13 +102,13 @@
     order: [[0, 'desc']]
   });
 });
-//--CODIGO PARA CREAR CATEGORIAS (LEVANTAR EL MODAL) ---------------------//
+//--CODIGO PARA CREAR ASIGNATURAS (LEVANTAR EL MODAL) ---------------------//
 $('#createNewAsignatura').click(function () {
   $('#asignaturaForm').trigger("reset");
   $('#create_asignaturas').modal({backdrop: 'static', keyboard: true, show: true});
   $('.alert-danger').hide();
 });
-//--CODIGO PARA CREAR CATEGORIAS (GUARDAR REGISTRO) ---------------------//
+//--CODIGO PARA CREAR ASIGNATURAS (GUARDAR REGISTRO) ---------------------//
 $('#SubmitCreateAsignatura').click(function(e) {
   e.preventDefault();
   $.ajaxSetup({

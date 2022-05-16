@@ -124,7 +124,7 @@ $('#createNewProfesor').click(function () {
   $('#create_profesores').modal({backdrop: 'static', keyboard: true, show: true});
   $('.alert-danger').hide();
 });
-//--CODIGO PARA CREAR PBX (GUARDAR REGISTRO) ---------------------//
+//--CODIGO PARA CREAR PORFESORES (GUARDAR REGISTRO) ---------------------//
 $('#SubmitCreateProfesor').click(function(e) {
   e.preventDefault();
   $.ajaxSetup({
@@ -166,7 +166,7 @@ $('#SubmitCreateProfesor').click(function(e) {
   });
 });
 
-//--CODIGO PARA EDITAR AGENCIA ---------------------//
+//--CODIGO PARA EDITAR PROFESOR ---------------------//
 $('body').on('click', '#editProfesor', function () {
   var id = $(this).data('id');
   $('#edit_profesores').trigger("reset");
@@ -186,6 +186,16 @@ $('body').on('click', '#editProfesor', function () {
       $('#username_edit').val(data.name);
     }
   });
+});
+
+//--CODIGO PARA ASIGNAR ASIGNATURAS A PROFESOR ---------------------//
+$('body').on('click', '#asignarProfesor', function () {
+  var id = $(this).data('id');
+  $("#id_profesor").val(id);
+  $('#asignarAsignaturaForm').trigger("reset");
+  $('#asignar_asignatura').modal({backdrop: 'static', keyboard: true, show: true});
+      $('.alert-danger').hide();
+  
 });
 //--CODIGO PARA UPDATE ESTADO ---------------------//
 $('#SubmitEditProfesor').click(function(e) {
@@ -281,6 +291,65 @@ function deleteProfesor(id){
       $("#clave_nueva2").removeAttr('required');
     }
   });
+  $("#id_programa").on('change', function(){
+    var id_programa=$("#id_programa").val();
+    $.get("/programas/"+id_programa+'/buscar_asignaturas', function (data) {
+      //console.log(data);
+      if (data.length > 0) {
+        $("#id_asignatura").empty();
+        for (var i = 0; i < data.length; i++) {
+          $("#id_asignatura").append('<option value="'+data[i].id+'">'+data[i].codigo+' - '+data[i].asignatura+'</option>');
+        }
+      }
+    })
+  });
+  //--CODIGO PARA ASIGNAR ASIGNATURAS A PORFESORES (GUARDAR REGISTRO) ---------------------//
+$('#SubmitCreateAsignacion').click(function(e) {
+  e.preventDefault();
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+
+  });
+
+  $.ajax({
+    url: "{{ route('profesores.asignar') }}",
+    method: 'post',
+    data: {
+      id_profesor: $('#id_profesor').val(),
+      id_programa: $('#id_programa').val(),
+      id_asignatura: $('#id_asignatura').val(),
+      id_periodo: $('#id_periodo').val(),
+      horas: $('#horas').val(),
+      semestre: $('#semestre').val(),
+      pensum: $('#pensum').val(),
+      seccion: $('#seccion').val(),
+      subseccion_practica: $('#subseccion_practica').val(),
+      subseccion_campo_clinico: $('#subseccion_campo_clinico').val(),
+      jornada: $('#jornada').val(),
+    },
+    success: function(result) {
+      //console.log(result);
+      if(result.errors) {
+        $('.alert-danger').html('');
+        $.each(result.errors, function(key, value) {
+          $('.alert-danger').show();
+          $('.alert-danger').append('<strong><li>'+value+'</li></strong>');
+        });
+      } else {
+        $('.alert-danger').hide();
+        var oTable = $('#profesores_table').dataTable();
+        oTable.fnDraw(false);
+        Swal.fire ( result.titulo ,  result.message ,  result.icono );
+        if (result.icono=="success") {
+          $("#asignar_asignatura").modal('hide');
+        }
+      }
+    }
+  });
+});
+
 </script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Programa;
+use App\Models\Asignatura;
 use Illuminate\Http\Request;
 use Alert;
 use Datatables;
@@ -159,5 +160,10 @@ class ProgramaController extends Controller
                 return response()->json(['message' => 'El programa no pudo ser eliminado','icono' => 'warning', 'titulo' => 'Alerta']);
             }
         }
+    }
+
+    public function buscar_asignaturas($id_programa)
+    {
+        return $asignaturas=Asignatura::where('id_programa',$id_programa)->get();
     }
 }

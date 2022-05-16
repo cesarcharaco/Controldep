@@ -6,7 +6,7 @@ use App\Models\Profesores;
 use App\Models\User;
 use App\Models\Programa;
 use App\Models\Periodo;
-use App\Models\Asignaturas;
+use App\Models\Asignatura;
 use Illuminate\Http\Request;
 use Alert;
 use Datatables;
@@ -28,17 +28,21 @@ class ProfesoresController extends Controller
             return datatables()->of($profesores)
                 ->addColumn('action', function ($row) {
 
-                    $edit = '<a href="javascript:void(0);" data-id="'.$row->id.'" class="btn btn-warning btn-xs" id="editProfesor"><i class="fa fa-pencil-alt"></i></a>';
+                    $edit = '<a href="javascript:void(0);" data-id="'.$row->id.'" class="btn btn-warning btn-xs" id="editProfesor" title="Presione para editar información del profesor"><i class="fa fa-pencil-alt"></i></a>';
                     
-                    $delete = ' <a href="javascript:void(0);" id="delete-profesor" onClick="deleteProfesor('.$row->id.')" class="delete btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>';
-                    return $edit . $delete;
+                    $delete = ' <a href="javascript:void(0);" id="delete-profesor" onClick="deleteProfesor('.$row->id.')" class="delete btn btn-danger btn-xs" title="Presione para eliminar al profesor"><i class="fa fa-trash"></i></a>';
+
+                    $asignar = '<a href="javascript:void(0);" data-id="'.$row->id.'" class="btn btn-success btn-xs" id="asignarProfesor" title="Presione para asignar asignaturas al profesor"><i class="fa fa-check"></i></a>';
+
+                    return $edit . $delete . $asignar;
                 })->rawColumns(['action'])
                 ->addIndexColumn()
                 ->make(true);
         }
         $programas=Programa::all();
         $periodos=Periodo::all();
-        return view('profesores.index', compact('programas','periodos'));
+        $asignaturas=Asignatura::where('id_programa',1)->get();
+        return view('profesores.index', compact('programas','periodos','asignaturas'));
     }
 
     /**
@@ -240,5 +244,38 @@ class ProfesoresController extends Controller
             }
             
         
+    }
+
+    public function asignar(Request $request)
+    {
+      $asignatura=Asignatura::find($request->id_asignatura);
+      $profesor=Profesores::find($request->id_profesor);
+      $programa=Programa::find($request->id_programa);
+      $periodo=Periodo::find($request->id_periodo);
+      $subseccion_tecnica=$request->jornada."-".$programa->cod."-".$request->semestre."-".$request->pensum."-".$request->seccion;
+
+       $buscar=\DB::table('asignacion')->where('id_periodo',$request->id_periodo)->where('subseccion_tecnica',$subseccion_tecnica)->count();
+
+       if ($buscar==0) {
+         #la subseccion tecnica no ha sido asignada
+         \DB::table('asignacion')->insert([
+          'id_profesor' => $request->id_profesor,
+          'id_asignatura' => $request->id_asignatura,
+          'id_periodo' => $request->id_periodo,
+          'horas' => $request->horas,
+          'subseccion_tecnica' => $subseccion_tecnica,
+          'subseccion_practica' => $request->subseccion_practica,
+          'semestre' => $request->semestre,
+          'pensum' => $request->pensum,
+          'seccion' => $request->seccion,
+          'subseccion_campo_clinico' => $request->subseccion_campo_clinico,
+          'jornada' => $request->jornada
+         ]);
+         return response()->json(['message' => 'Al profesor '.$profesor->profesor.' le fue asignada con éxito la asignatura '.$asignatura->asignatura.' para el periodo: '.$periodo->periodo,'icono' => 'success', 'titulo' => 'Éxito']);
+       } else {
+          # la subseccion tecnica ya ha sido asignada
+        return response()->json(['message' => 'No se pudo realizar la asignación debido a que la subsección técnica ya ha sido asignada','icono' => 'warning', 'titulo' => 'Alerta']);
+       }
+       
     }
 }
