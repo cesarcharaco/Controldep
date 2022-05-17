@@ -96,7 +96,7 @@
             <table cellspacing="0" cellpadding="0" width="500" class="w320">
               <tr>
                 <td valign="top" style="padding:10px 0; text-align:center;" class="mobile-center">
-                  <img src="ttps://ibb.co/sJF1Tbj" alt="logo-SIME" border="0" width="450" height="150">
+                  <img src="ttps://ibb.co/sJF1Tbj/logo_sime2.png" alt="logo-SIME" border="0" width="450" height="150">
                 </td>
               </tr>
             </table>
@@ -123,7 +123,7 @@
                   <center>
                   <table style="margin: 0 auto;" cellspacing="0" cellpadding="8" width="100%">
                     <tr>
-                      <td style="border: 1px solid #a1a1a1; text-align:center;">
+                      <td style="border: 1px solid #a1a1a1; text-align:justify;">
                         <p>Primeramente muy buenos días, tardes o noches, esperando que se encuentre en excelentes condiciones, continuamos agradeciendo mucho su tiempo y dedicación para ejercer su labor en nuestra institución. Le instamos a seguir dando ese granito de arena que es tan valioso para construir a excelentes profesionales y prepararlos para el futuro.  <br>
                           El siguiente mensaje es para recordar que, considerando la planificación de las evaluaciones registradas por usted, debe cargar las calificaciones de la evaluación que realizará o realizó el día de hoy en:  <?php echo $mensaje; ?></p>
                       </td>
@@ -165,7 +165,7 @@
                               <center style="color:#ffffff;font-family:sans-serif;font-size:13px;">Come back!</center>
                             </v:roundrect>
                           <![endif]-->
-                          <!--[if !mso]> --><center><a href="http://naturandess.eiche.cl/"><table cellspacing="0" cellpadding="0" width="100%"><tr><td style="background-color:#3bcdc3;border-radius:0px;color:#ffffff;display:inline-block;font-family:'Lato', Helvetica, Arial, sans-serif;font-weight:bold;font-size:13px;line-height:33px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;"><span style="color:#ffffff">Iniciar sesión!</span></td></tr></table></a></center>
+                          <!--[if !mso]> --><center><a href="https:/sime.lozne.cl/"><table cellspacing="0" cellpadding="0" width="100%"><tr><td style="background-color:#3bcdc3;border-radius:0px;color:#ffffff;display:inline-block;font-family:'Lato', Helvetica, Arial, sans-serif;font-weight:bold;font-size:13px;line-height:33px;text-align:center;text-decoration:none;width:150px;-webkit-text-size-adjust:none;mso-hide:all;"><span style="color:#ffffff">Iniciar sesión!</span></td></tr></table></a></center>
                           <!--<![endif]-->
                         </div>
                       </td>
