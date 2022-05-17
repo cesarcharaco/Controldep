@@ -29,7 +29,7 @@ class HomeController extends Controller
         $codigo="FGIN01";
         $programa="Ingeniería en Maquinaria Pesada y Vehículos Automotrices";
         $nombres="cesar";
-        $mensaje="La asignatura: ".$asignatura." de código: ".$codigo.", del Programa: ".$programa.". La cual tenia fecha de presentación para el día de hoy. Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.";
+        $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b>. La cual tenia fecha de presentación para el día de hoy. Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.";
         $email="jcesarchg9@gmail.com";
 
         $send_admin=Mail::send('notificaciones.email',
