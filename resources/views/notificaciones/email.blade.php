@@ -96,7 +96,7 @@
             <table cellspacing="0" cellpadding="0" width="500" class="w320">
               <tr>
                 <td valign="top" style="padding:10px 0; text-align:center;" class="mobile-center">
-                  <img src="ttps://ibb.co/sJF1Tbj/logo_sime2.png" alt="logo-SIME" border="0" width="450" height="150">
+                  <img src="https://i.ibb.co/HprPcB7/sime-logo2.png" alt="logo-SIME" border="0" width="450" height="150">
                 </td>
               </tr>
             </table>
