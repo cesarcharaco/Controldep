@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Skyline Reignite Email</title>
+  <title>SIME - Notificaciones</title>
   <style type="text/css">
     @import url(http://fonts.googleapis.com/css?family=Lato:400);
     /* Take care of image borders and formatting */
@@ -96,7 +96,7 @@
             <table cellspacing="0" cellpadding="0" width="500" class="w320">
               <tr>
                 <td valign="top" style="padding:10px 0; text-align:center;" class="mobile-center">
-                  <img src="https://i.ibb.co/DRDYVc7/naturandes.jpg" alt="logo-naturandes" border="0" width="450" height="150">
+                  <img src="ttps://ibb.co/sJF1Tbj" alt="logo-SIME" border="0" width="450" height="150">
                 </td>
               </tr>
             </table>
@@ -124,8 +124,8 @@
                   <table style="margin: 0 auto;" cellspacing="0" cellpadding="8" width="100%">
                     <tr>
                       <td style="border: 1px solid #a1a1a1; text-align:center;">
-                        <p><?php echo $mensaje; ?> <br>
-                          El repartidor <?php echo $nombres; ?> ha realizado una nueva ventas</p>
+                        <p>Primeramente muy buenos días, tardes o noches, esperando que se encuentre en excelentes condiciones, continuamos agradeciendo mucho su tiempo y dedicación para ejercer su labor en nuestra institución. Le instamos a seguir dando ese granito de arena que es tan valioso para construir a excelentes profesionales y prepararlos para el futuro.  <br>
+                          El siguiente mensaje es para recordar que, considerando la planificación de las evaluaciones registradas por usted, debe cargar las calificaciones de la evaluación que realizará o realizó el día de hoy en:  <?php echo $mensaje; ?></p>
                       </td>
                     </tr>
                   </table>
@@ -142,9 +142,9 @@
                       <td class="mobile-padding" style="text-align:justify; color: black !important;">
                       <br>
                         <b>¡Información de interes!</b><br>
-                        Un Repartidor ha realizado una nueva venta desde el sistema de naturandes, estas se encuenta con status no pagada hasta que el admin las verifiques.
+                        Considerando lo valioso que es para nuestros estudiantes llevar un control de sus calificaciones les instamos a formar parte de ese grupo de personas valiosas para ellos.
                         <br><br>
-                        Si tiene alguna duda escribanos a la siguiente dirección de correo: <b>promociones@naturandeschile.com</b>
+                        Si desea mas información sobre SIME, le invitamos a comunicarse a: <b>enzol.albarran@inacapmail.cl</b>
                       <br>
                       <br>
 

@@ -25,16 +25,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $asignatura="Inglés I";
+        $codigo="FGIN01";
+        $programa="Ingeniería en Maquinaria Pesada y Vehículos Automotrices";
         $nombres="cesar";
-        $mensaje="hola mundo";
+        $mensaje="La asignatura: ".$asignatura." de código: ".$codigo.", del Programa: ".$programa.". La cual tenia fecha de presentación para el día de hoy. Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.";
         $email="jcesarchg9@gmail.com";
 
         $send_admin=Mail::send('notificaciones.email',
             ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
 
             /*$pdf = PDF::loadView(('pdf/ventas_repartidor'),array('nombres'=>$nombres,'email'=>$email));*/
-            $m->from('enzol.inacap@gmail.com', 'Naturandes!');
-            $m->to('jcesarchg9@gmail.com')->subject('Probando envio de correo');
+            $m->from('enzol.inacap@gmail.com', 'SIME!');
+            $m->to('jcesarchg9@gmail.com')->subject('Notificación de Carga de Calificaciones');
             //$m->attachData($pdf->output(), "ventas_repartidor.pdf");
         });
         return view('home');
