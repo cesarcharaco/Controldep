@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Correlativos;
 use App\Models\PreCotizaciones;
+use Mail;
 class HomeController extends Controller
 {
     /**
@@ -24,43 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        /*$hoy=date('Y-m-d');
-        $buscar=Correlativos::all();
-        if (count($buscar) == 0) {
-            $inicio=8516;
-            //generando numeros
-            for ($i=1; $i <= 26 ; $i++) { 
-                $correlativo=new Correlativos();
-                $correlativo->numero_cotizacion=$inicio+$i;
-                $correlativo->fecha=$hoy;
-                $correlativo->save();
-            }
-        }else{
-            $buscar=Correlativos::where('status','Disponible')->count();
-            if($buscar==0){
-                $cot=Correlativos::orderBy('id','DESC')->first();
-                for ($i=1; $i <= 26 ; $i++) { 
-                $correlativo=new Correlativos();
-                $correlativo->numero_cotizacion=$cot->numero_cotizacion+$i;
-                $correlativo->fecha=$hoy;
-                $correlativo->save();
-            }
+        $nombres="cesar";
+        $mensaje="hola mundo";
+        $email="jcesarchg9@gmail.com";
 
-            }else{
-                if ($buscar <= 6) {
-                    $fin=26-$buscar;
-                    $cot=Correlativos::orderBy('id','DESC')->first();
-                    for ($i=1; $i <= $fin ; $i++) { 
-                        $correlativo=new Correlativos();
-                        $correlativo->numero_cotizacion=$cot->numero_cotizacion+$i;
-                        $correlativo->fecha=$hoy;
-                        $correlativo->save();
-                    }
-                }
+        $send_admin=Mail::send('notificaciones.email',
+            ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
 
-            }
-        }*/
-        
+            /*$pdf = PDF::loadView(('pdf/ventas_repartidor'),array('nombres'=>$nombres,'email'=>$email));*/
+            $m->from('enzol.inacap@gmail.com', 'Naturandes!');
+            $m->to('jcesarchg9@gmail.com')->subject('Probando envio de correo');
+            //$m->attachData($pdf->output(), "ventas_repartidor.pdf");
+        });
         return view('home');
     }
 }
