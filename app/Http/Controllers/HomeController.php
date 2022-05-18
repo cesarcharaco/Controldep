@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Correlativos;
-use App\Models\PreCotizaciones;
+use App\Models\PDE;
+use App\Models\Asignaturas;
+use App\Models\Programa;
+use App\Models\Profesores;
 use Mail;
+
 class HomeController extends Controller
 {
     /**
@@ -25,11 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         $asignatura="Inglés I";
         $codigo="FGIN01";
         $programa="Ingeniería en Maquinaria Pesada y Vehículos Automotrices";
         $nombres="cesar";
-        $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b>. La cual tenia fecha de presentación para el día de hoy. Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.";
+        $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b>. La cual tenia fecha de presentación para el día de hoy y tiene 10 días a partir de la llega de este correo para cargar las calificaciones. Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.";
         $email="jcesarchg9@gmail.com";
 
         $send_admin=Mail::send('notificaciones.email',
