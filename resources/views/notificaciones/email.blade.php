@@ -125,7 +125,9 @@
                     <tr>
                       <td style="border: 1px solid #a1a1a1; text-align:justify;">
                         <p>Primeramente muy buenos días, tardes o noches, esperando que se encuentre en excelentes condiciones, continuamos agradeciendo mucho su tiempo y dedicación para ejercer su labor en nuestra institución. Le instamos a seguir dando ese granito de arena que es tan valioso para construir a excelentes profesionales y prepararlos para el futuro.  <br>
-                          El siguiente mensaje es para recordar que, considerando la planificación de las evaluaciones registradas por usted, debe cargar las calificaciones de la evaluación que realizará o realizó el día de hoy en:  <?php echo $mensaje; ?></p>
+                          El siguiente mensaje es para recordar que, considerando la planificación de las evaluaciones registradas por usted, debe cargar las calificaciones de la evaluación que realizará o realizó el día de hoy en:  <?php echo $mensaje; ?></br>
+                          Tiene 10 días para cargar las respectivas calificaciones.
+                        </p>
                       </td>
                     </tr>
                   </table>

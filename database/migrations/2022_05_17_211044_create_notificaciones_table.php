@@ -16,9 +16,11 @@ class CreateNotificacionesTable extends Migration
         Schema::create('notificaciones', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pde');
-            $table->string('mismo_dia');
-            $table->string();
-            $table->string();
+            $table->enum('mismo_dia',['Si','No'])->default('No');
+            $table->enum('diez_dias',['Si','No'])->default('No');
+            $table->enum('catorce_dias',['Si','No'])->default('No');
+
+            $table->foreign('id_pde')->references('id')->on('pde');
             $table->timestamps();
         });
     }

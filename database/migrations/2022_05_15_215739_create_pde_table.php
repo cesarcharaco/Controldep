@@ -20,6 +20,7 @@ class CreatePdeTable extends Migration
             $table->float('ponderacion_eval');
             $table->float('nota_eval')->nullable();
             $table->string('instrumento_eval');
+            $table->enum('nota_cargada',['Si','No'])->default('No');
             $table->timestamps();
         });
     }

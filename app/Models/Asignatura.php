@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Asignacion;
 class Asignatura extends Model
 {
     use HasFactory;
@@ -16,7 +16,7 @@ class Asignatura extends Model
 
     public function asignacion(){
 
-    	return $this->belongsToMany(Pedidos::class,'asignacion','id_asignatura','id_periodo','id_profesor')->withPivot('horas','subseccion_tecnica','semestre','pensum','seccion','subseccion_practica','subseccion_campo_clinico','jornada');
+    	return $this->belongsToMany(Asignacion::class,'asignacion','id_asignatura','id_periodo','id_profesor')->withPivot('horas','subseccion_tecnica','semestre','pensum','seccion','subseccion_practica','subseccion_campo_clinico','jornada');
     }
 
     public function programa()
