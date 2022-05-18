@@ -40,7 +40,7 @@ class HomeController extends Controller
                 $hoy="2022-05-29";
                 $diez_dias= date("Y-m-d",strtotime($key->fecha."+ 10 days"));
                 $catorce_dias= date("Y-m-d",strtotime($key->fecha."+ 14 days"));
-                dd($diez_dias);
+                dd($diez_dias."--".$hoy);
 
 
                 $notificacion_md=Notificaciones::where('id_pde',$key->id)->where('mismo_dia','No')->count();
@@ -59,13 +59,13 @@ class HomeController extends Controller
                     $periodo=$asignacion->periodo->periodo;
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. La cual tenia fecha de presentación para el día de hoy y tiene 10 días a partir de la llega de este correo para cargar las calificaciones. Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.";
                     //correo para el mismo dia de la evaluacion
-                    $send_admin=Mail::send('notificaciones.email_dd',
+                    /*$send_admin=Mail::send('notificaciones.email_dd',
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
                     $m->to($email)->subject('Notificación de Carga de Calificaciones');
                     
-                    });
+                    });*/
                     $notificacion_dd= new Notificaciones();
                     $notificacion_dd->id_pde=$key->id;
                     $notificacion_dd->mismo_dia="Si";
@@ -85,13 +85,13 @@ class HomeController extends Controller
                     $periodo=$asignacion->periodo->periodo;
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. ";
                     //correo para el mismo dia de la evaluacion
-                    $send_admin=Mail::send('notificaciones.email_cd',
+                    /*$send_admin=Mail::send('notificaciones.email_cd',
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
                     $m->to($email)->subject('Notificación de Carga de Calificaciones');
                     
-                    });
+                    });*/
                     $notificacion_cd= Notificaciones::where('id_pde',$key->id)->first();
                     $notificacion_cd->catorce_dias="Si";
                     $notificacion_cd->save();
@@ -110,13 +110,13 @@ class HomeController extends Controller
                     $periodo=$asignacion->periodo->periodo;
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. ";
                     //correo para el mismo dia de la evaluacion
-                    $send_admin=Mail::send('notificaciones.email',
+                    /*$send_admin=Mail::send('notificaciones.email',
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
                     $m->to($email)->subject('Notificación de Carga de Calificaciones');
                     
-                    });
+                    });*/
                     $notificacion_md= Notificaciones::where('id_pde',$key->id)->first();
                     $notificacion_md->diez_dias="Si";
                     $notificacion_md->save();
