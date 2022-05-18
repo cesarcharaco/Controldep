@@ -53,7 +53,7 @@ class HomeController extends Controller
                     
                     $asignatura=$asignacion->asignatura->asignatura;
                     $codigo=$asignacion->asignatura->codigo;
-                    $programa=$asignacion->programa->programa;
+                    $programa=$asignacion->asignatura->programa->programa;
                     $nombres=$asignacion->profesor->profesor;
                     $email=$asignacion->profesor->correo;
                     $periodo=$asignacion->periodo->periodo;
@@ -79,7 +79,7 @@ class HomeController extends Controller
                     
                     $asignatura=$asignacion->asignatura->asignatura;
                     $codigo=$asignacion->asignatura->codigo;
-                    $programa=$asignacion->programa->programa;
+                    $programa=$asignacion->asignatura->programa->programa;
                     $nombres=$asignacion->profesor->profesor;
                     $email=$asignacion->profesor->correo;
                     $periodo=$asignacion->periodo->periodo;
@@ -104,7 +104,7 @@ class HomeController extends Controller
                     
                     $asignatura=$asignacion->asignatura->asignatura;
                     $codigo=$asignacion->asignatura->codigo;
-                    $programa=$asignacion->programa->programa;
+                    $programa=$asignacion->asignatura->programa->programa;
                     $nombres=$asignacion->profesor->profesor;
                     $email=$asignacion->profesor->correo;
                     $periodo=$asignacion->periodo->periodo;
