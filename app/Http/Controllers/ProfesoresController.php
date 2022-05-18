@@ -271,8 +271,7 @@ class ProfesoresController extends Controller
           'subseccion_campo_clinico' => $request->subseccion_campo_clinico,
           'jornada' => $request->jornada
          ]);
-         echo "aqui";
-         /*return response()->json(['message' => 'Al profesor '.$profesor->profesor.' le fue asignada con éxito la asignatura '.$asignatura->asignatura.' para el periodo: '.$periodo->periodo,'icono' => 'success', 'titulo' => 'Éxito']);*/
+         return response()->json(['message' => 'Al profesor '.$profesor->profesor.' le fue asignada con éxito la asignatura '.$asignatura->asignatura.' para el periodo: '.$periodo->periodo,'icono' => 'success', 'titulo' => 'Éxito']);
        } else {
           # la subseccion tecnica ya ha sido asignada
         return response()->json(['message' => 'No se pudo realizar la asignación debido a que la subsección técnica ya ha sido asignada','icono' => 'warning', 'titulo' => 'Alerta']);

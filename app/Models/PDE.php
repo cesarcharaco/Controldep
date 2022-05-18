@@ -17,4 +17,9 @@ class PDE extends Model
     {
     	return $this->belongsTo('App\Models\Asignacion','id_asignacion','id');
     }
+
+    public function notificacion()
+    {
+    	return $this->hasMany('App\Models\Notificaciones','id_pde','id');
+    }
 }
