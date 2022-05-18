@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PDE;
-use App\Models\Asignaturas;
+use App\Models\Asignatura;
 use App\Models\Asignacion;
 use App\Models\Programa;
 use App\Models\Profesores;
