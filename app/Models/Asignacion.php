@@ -25,7 +25,7 @@ class Asignacion extends Model
 
     public function asignatura()
     {
-        return $this->belongsTo('App\Models\Asignaturas','id_asignatura','id');   
+        return $this->belongsTo('App\Models\Asignatura','id_asignatura','id');   
     }
 
     public function periodo()
