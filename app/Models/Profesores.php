@@ -18,10 +18,10 @@ class Profesores extends Model
     	return $this->belongsTo('App\Models\User','id_usuario','id');
     }
 
-    public function asignacion(){
+    /*public function asignacion(){
 
     	return $this->belongsToMany(Asignacion::class,'asignacion','id_profesor','id_asignatura','id_periodo')->withPivot('horas','subseccion_tecnica','semestre','pensum','seccion','subseccion_practica','subseccion_campo_clinico','jornada');
-    }
+    }*/
 
     public function asignacion()
     {
