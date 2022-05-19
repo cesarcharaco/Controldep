@@ -37,10 +37,10 @@ class HomeController extends Controller
         //verificando fechas actuales
             //$hoy=date('Y-m-d');
             foreach ($buscar as $key) {
-                $hoy="2022-05-29";
+                $hoy="2022-05-19";
                 $diez_dias= date("Y-m-d",strtotime($key->fecha."+ 10 days"));
                 $catorce_dias= date("Y-m-d",strtotime($key->fecha."+ 14 days"));
-                dd($diez_dias."--".$hoy);
+                //dd($diez_dias."--".$hoy);
 
 
                 $notificacion_md=Notificaciones::where('id_pde',$key->id)->where('mismo_dia','No')->count();
@@ -75,6 +75,7 @@ class HomeController extends Controller
 
                 //verificando a los catorce dias de la fecha de la evaluacion
                 if ($hoy==$diez_dias and $notificacion_dd == 0) {
+                    dd('entro');
                     $asignacion=Asignacion::find($key->id_asignacion);
                     
                     $asignatura=$asignacion->asignatura->asignatura;
