@@ -40,7 +40,7 @@ class HomeController extends Controller
                 $hoy="2022-05-19";
                 $diez_dias= date("Y-m-d",strtotime($key->fecha."+ 10 days"));
                 $catorce_dias= date("Y-m-d",strtotime($key->fecha."+ 14 days"));
-                //dd($diez_dias."--".$hoy);
+                dd($diez_dias."--".$hoy);
 
 
                 $notificacion_md=Notificaciones::where('id_pde',$key->id)->where('mismo_dia','No')->count();
