@@ -31,8 +31,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $email2="jcesarchg9@gmail.com";
         if (\Auth::getUser()->user_type=="Admin") {
+        $email2="jcesarchg9@gmail.com";
             //buscar los pde no cargados
         $buscar=PDE::where('nota_cargada','No')->get();
         //verificando fechas actuales
@@ -61,7 +61,7 @@ class HomeController extends Controller
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. La cual tenia fecha de presentación para el día de hoy y tiene 10 días a partir de la llega de este correo para cargar las calificaciones. Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.";
                     //correo para el mismo dia de la evaluacion
                     $send_admin=Mail::send('notificaciones.email_dd',
-                    ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
+                    ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email2,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
                     $m->to($email2)->subject('Notificación de Carga de Calificaciones');
@@ -76,7 +76,7 @@ class HomeController extends Controller
 
                 //verificando a los catorce dias de la fecha de la evaluacion
                 if ($hoy==$diez_dias and $notificacion_dd == 0) {
-                    dd('entro');
+                    
                     $asignacion=Asignacion::find($key->id_asignacion);
                     
                     $asignatura=$asignacion->asignatura->asignatura;
@@ -88,7 +88,7 @@ class HomeController extends Controller
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. ";
                     //correo para el mismo dia de la evaluacion
                     $send_admin=Mail::send('notificaciones.email_cd',
-                    ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
+                    ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email2,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
                     $m->to($email2)->subject('Notificación de Carga de Calificaciones');
@@ -113,7 +113,7 @@ class HomeController extends Controller
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. ";
                     //correo para el mismo dia de la evaluacion
                     $send_admin=Mail::send('notificaciones.email',
-                    ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
+                    ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email2,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
                     $m->to($email2)->subject('Notificación de Carga de Calificaciones');
