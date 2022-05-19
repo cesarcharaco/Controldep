@@ -60,7 +60,7 @@ class HomeController extends Controller
                     $periodo=$asignacion->periodo->periodo;
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. La cual tenia fecha de presentación para el día de hoy y tiene 10 días a partir de la llega de este correo para cargar las calificaciones. Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.";
                     //correo para el mismo dia de la evaluacion
-                    $send_admin=Mail::send('notificaciones.email_dd',
+                    $send_admin=Mail::send('notificaciones.email',
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email2,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
@@ -87,7 +87,7 @@ class HomeController extends Controller
                     $periodo=$asignacion->periodo->periodo;
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. ";
                     //correo para el mismo dia de la evaluacion
-                    $send_admin=Mail::send('notificaciones.email_cd',
+                    $send_admin=Mail::send('notificaciones.email_dd',
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email2,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
@@ -112,7 +112,7 @@ class HomeController extends Controller
                     $periodo=$asignacion->periodo->periodo;
                     $mensaje="La asignatura: <b>".$asignatura."</b> de código: <b>".$codigo."</b>, del Programa: <b>".$programa."</b> para el periodo: <b>".$periodo."</b>. ";
                     //correo para el mismo dia de la evaluacion
-                    $send_admin=Mail::send('notificaciones.email',
+                    $send_admin=Mail::send('notificaciones.email_cd',
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email2,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
