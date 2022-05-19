@@ -40,7 +40,7 @@ class HomeController extends Controller
                 $hoy="2022-05-29";
                 $diez_dias= date("Y-m-d",strtotime($key->fecha."+ 10 days"));
                 $catorce_dias= date("Y-m-d",strtotime($key->fecha."+ 14 days"));
-                //dd($diez_dias."--".$hoy);
+                dd($diez_dias."--".$hoy);
 
 
                 $notificacion_md=Notificaciones::where('id_pde',$key->id)->where('mismo_dia','No')->count();
@@ -48,7 +48,7 @@ class HomeController extends Controller
                 $notificacion_cd=Notificaciones::where('id_pde',$key->id)->where('catorce_dias','No')->count();
 
                 //verificando el mismo dia que seria hoy para enviar notificacion
-                if ($hoy==$diez_dias and $notificacion_md == 0) {
+                if ($hoy==$key->fecha and $notificacion_md == 0) {
                     $asignacion=Asignacion::find($key->id_asignacion);
                     
                     $asignatura=$asignacion->asignatura->asignatura;
@@ -74,7 +74,7 @@ class HomeController extends Controller
                 }//fin de la notificacion del mismo dia
 
                 //verificando a los catorce dias de la fecha de la evaluacion
-                if ($hoy==$catorce_dias and $notificacion_dd == 0) {
+                if ($hoy==$diez_dias and $notificacion_dd == 0) {
                     $asignacion=Asignacion::find($key->id_asignacion);
                     
                     $asignatura=$asignacion->asignatura->asignatura;
@@ -99,7 +99,7 @@ class HomeController extends Controller
                 }
 
                 //verificando a los diez dias de la fecha de la evaluacion
-                if ($hoy==$diez_dias and $notificacion_dd == 0) {
+                if ($hoy==$catorce_dias and $notificacion_cd == 0) {
                     $asignacion=Asignacion::find($key->id_asignacion);
                     
                     $asignatura=$asignacion->asignatura->asignatura;
