@@ -31,6 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $email2="jcesarchg9@gmail.com";
         if (\Auth::getUser()->user_type=="Admin") {
             //buscar los pde no cargados
         $buscar=PDE::where('nota_cargada','No')->get();
@@ -63,7 +64,7 @@ class HomeController extends Controller
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
-                    $m->to($email)->subject('Notificación de Carga de Calificaciones');
+                    $m->to($email2)->subject('Notificación de Carga de Calificaciones');
                     
                     });
                     $noti= new Notificaciones();
@@ -90,7 +91,7 @@ class HomeController extends Controller
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
-                    $m->to($email)->subject('Notificación de Carga de Calificaciones');
+                    $m->to($email2)->subject('Notificación de Carga de Calificaciones');
                     
                     });
                     $noti= Notificaciones::where('id_pde',$key->id)->first();
@@ -115,7 +116,7 @@ class HomeController extends Controller
                     ['nombres'=>$nombres, 'mensaje' => $mensaje], function ($m) use ($nombres,$email,$mensaje) {
                     
                     $m->from('enzol.inacap@gmail.com', 'SIME!');
-                    $m->to($email)->subject('Notificación de Carga de Calificaciones');
+                    $m->to($email2)->subject('Notificación de Carga de Calificaciones');
                     
                     });
                     $noti= Notificaciones::where('id_pde',$key->id)->first();
