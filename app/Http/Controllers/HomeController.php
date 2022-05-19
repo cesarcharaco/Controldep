@@ -47,7 +47,7 @@ class HomeController extends Controller
                 $notificacion_md=Notificaciones::where('id_pde',$key->id)->where('mismo_dia','No')->count();
                 $notificacion_dd=Notificaciones::where('id_pde',$key->id)->where('diez_dias','No')->count();
                 $notificacion_cd=Notificaciones::where('id_pde',$key->id)->where('catorce_dias','No')->count();
-
+                dd($notificacion_md);
                 //verificando el mismo dia que seria hoy para enviar notificacion
                 if ($hoy==$key->fecha and $notificacion_md == 0) {
                     $asignacion=Asignacion::find($key->id_asignacion);
