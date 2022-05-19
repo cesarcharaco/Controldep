@@ -66,10 +66,10 @@ class HomeController extends Controller
                     $m->to($email)->subject('Notificación de Carga de Calificaciones');
                     
                     });
-                    $notificacion_dd= new Notificaciones();
-                    $notificacion_dd->id_pde=$key->id;
-                    $notificacion_dd->mismo_dia="Si";
-                    $notificacion_dd->save();
+                    $noti= new Notificaciones();
+                    $noti->id_pde=$key->id;
+                    $noti->mismo_dia="Si";
+                    $noti->save();
 
                 }//fin de la notificacion del mismo dia
 
@@ -92,9 +92,9 @@ class HomeController extends Controller
                     $m->to($email)->subject('Notificación de Carga de Calificaciones');
                     
                     });
-                    $notificacion_cd= Notificaciones::where('id_pde',$key->id)->first();
-                    $notificacion_cd->catorce_dias="Si";
-                    $notificacion_cd->save();
+                    $noti= Notificaciones::where('id_pde',$key->id)->first();
+                    $noti->catorce_dias="Si";
+                    $noti->save();
 
                 }
 
@@ -117,9 +117,9 @@ class HomeController extends Controller
                     $m->to($email)->subject('Notificación de Carga de Calificaciones');
                     
                     });
-                    $notificacion_md= Notificaciones::where('id_pde',$key->id)->first();
-                    $notificacion_md->diez_dias="Si";
-                    $notificacion_md->save();
+                    $noti= Notificaciones::where('id_pde',$key->id)->first();
+                    $noti->diez_dias="Si";
+                    $noti->save();
 
                 }
             }
