@@ -128,7 +128,8 @@
                           El siguiente mensaje es para mencionarle que según la planificación cargada por usted:  <?php echo $mensaje; ?></br>
                           Hace 14 días que debió cargarlas y su falta de puntualidad a ocasionado retrasos en los procesos de control de las calificaciones de los estudiantes.
                           <br>
-                          También cabe destacar que ha incumplido en los reglamentos internos de la institución, según los artículos------- donde se expresa la razón misma por la cual enviamos ésta notificación.
+                          También cabe destacar que ha incumplido en los reglamentos internos de la institución.<center><b>REGLAMENTO ACADÉMICO GENERAL<BR>INSTITUTO PROFESIONAL INACAP<BR>
+                          Artículo 28:</b> Los resultados de la evaluación deberán ser informados al estudiante por el docente, mediante su incorporación al SIGA, en el plazo máximo de 10 días hábiles contados desde el día siguiente a su realización.<br></center>Donde se expresa la razón misma por la cual enviamos ésta notificación.
                           <br>
                           Nos destacamos por ser una institucion con los mejores y capacitados porfesionales para ejercer las labores de docentes, y la falta de responsabilidad no es una característica de la cual debamos presumir. 
                         </p>
