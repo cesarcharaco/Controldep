@@ -126,7 +126,12 @@
                       <td style="border: 1px solid #a1a1a1; text-align:justify;">
                         <p>Primeramente muy buenos días, tardes o noches, esperando que se encuentre en excelentes condiciones, continuamos agradeciendo mucho su tiempo y dedicación para ejercer su labor en nuestra institución. Le instamos a seguir dando ese granito de arena que es tan valioso para construir a excelentes profesionales y prepararlos para el futuro.  <br>
                           El siguiente mensaje es para volver a recordar que, considerando la planificación de las evaluaciones registradas por usted<br>  <?php echo $mensaje; ?></br>
-                          La cual tiene pendiente la carga de las mismas ya hoy 10 días después de la presentación, la cual es la fecha límite, es necesario el cumplimiento de los acuerdos con los estudiantes y la institución para un correcto funcionamiento de la misma, por favor realizar la carga lo más pronto posible.<br>
+                          La cual tiene pendiente la carga de las mismas ya hoy 10 días después de la presentación, la cual es la fecha límite, es necesario el cumplimiento de los acuerdos de la institución.<br>
+                          <center><b>REGLAMENTO ACADÉMICO GENERAL<BR>INSTITUTO PROFESIONAL INACAP<BR>
+                          Artículo 28:</b> Los resultados de la evaluación deberán ser informados al estudiante por el docente, mediante su incorporación al SIGA, en el plazo máximo de 10 días hábiles contados desde el día siguiente a su realización.<br></center>
+
+
+                           Para un correcto funcionamiento de la misma, por favor realizar la carga lo más pronto posible.<br>
                           Recuerde que la puntualidad y responsabilidad son una de las mayores virtudes de un profesional.
                         </p>
                       </td>

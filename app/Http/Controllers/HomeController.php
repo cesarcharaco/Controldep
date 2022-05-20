@@ -39,8 +39,8 @@ class HomeController extends Controller
             //$hoy=date('Y-m-d');
             foreach ($buscar as $key) {
                 $hoy="2022-05-29";
-                $diez_dias= date("Y-m-d",strtotime($key->fecha."+ 10 days"));
-                $catorce_dias= date("Y-m-d",strtotime($key->fecha."+ 14 days"));
+                $diez_dias= date("Y-m-d",strtotime($key->fecha."+ 11 days"));
+                $catorce_dias= date("Y-m-d",strtotime($key->fecha."+ 15 days"));
                 //dd($diez_dias."--".$hoy);
 
 
@@ -95,7 +95,7 @@ class HomeController extends Controller
                     
                     });
                     $noti= Notificaciones::where('id_pde',$key->id)->first();
-                    $noti->catorce_dias="Si";
+                    $noti->diez_dias="Si";
                     $noti->save();
 
                 }
@@ -120,7 +120,7 @@ class HomeController extends Controller
                     
                     });
                     $noti= Notificaciones::where('id_pde',$key->id)->first();
-                    $noti->diez_dias="Si";
+                    $noti->catorce_dias="Si";
                     $noti->save();
 
                 }
