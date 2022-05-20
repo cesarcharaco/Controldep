@@ -38,8 +38,8 @@ class HomeController extends Controller
         //verificando fechas actuales
             //$hoy=date('Y-m-d');
             foreach ($buscar as $key) {
-                $hoy="2022-05-29";
-                $diez_dias= date("Y-m-d",strtotime($key->fecha."+ 10 days"));
+                $hoy="2022-06-03";
+                $diez_dias= date("Y-m-d",strtotime($key->fecha."+ 11 days"));
                 $catorce_dias= date("Y-m-d",strtotime($key->fecha."+ 15 days"));
                 //dd($diez_dias."--".$hoy);
 
